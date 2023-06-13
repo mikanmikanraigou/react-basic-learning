@@ -10,13 +10,13 @@ const ExpenseItem = (prop) => {
     const expensesData = prop.expensesData;
     const [ title, setTitle ] = useState(expensesData.title);
 
-    const clickHandler = () => {
-        if (title === expensesData.title) {
-            setTitle('New Title');
-        }else{
-            setTitle(expensesData.title);
-        }
-    }
+    // const clickHandler = () => {
+    //     if (title === expensesData.title) {
+    //         setTitle('New Title');
+    //     }else{
+    //         setTitle(expensesData.title);
+    //     }
+    // }
     return (
         <Card className="expense-item">
             <ExpenseDate date={expensesData.date}/>
@@ -24,7 +24,7 @@ const ExpenseItem = (prop) => {
                 <h2>{title}</h2>
                 <div className="expense-item__price">$ {expensesData.amount}</div>
             </div>
-            <button onClick={clickHandler}> Change Title </button>
+            {/* <button onClick={clickHandler}> Change Title </button> */}
         </Card>
         )
 }

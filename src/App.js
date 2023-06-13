@@ -9,9 +9,13 @@ function App() {
     {title: 'Mortage', amount: 300.00, date: new Date(2021, 5, 25)},
     {title: 'Electric Bill', amount: 60.00, date: new Date(2021, 4, 14)},
   ]
+
+  const addExpenseHandler = ( expensesData ) => {
+    console.log(expensesData);
+  }
     return (
       <div>
-        <NewExpenses/>
+        <NewExpenses onAddExpense = { addExpenseHandler }/>
         <Expenses expense={expenses}/>
       </div>
     );
