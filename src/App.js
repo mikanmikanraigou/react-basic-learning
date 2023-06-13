@@ -13,10 +13,13 @@ function App() {
   const addExpenseHandler = ( expensesData ) => {
     console.log(expensesData);
   }
+  const addExpenseFilter = ( data ) => {
+    console.log( data );
+  }
     return (
       <div>
         <NewExpenses onAddExpense = { addExpenseHandler }/>
-        <Expenses expense={expenses}/>
+        <Expenses expense={ expenses } onAddFilter = { addExpenseFilter }/>
       </div>
     );
   }
