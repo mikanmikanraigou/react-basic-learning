@@ -45,7 +45,6 @@ const ExpenseForm = ( props ) => {
         //     return {...prevState, setDate: event.target.value};
         // })
     };
-
     const submitHandler = ( event ) => {
         event.preventDefault();
         const expenseData = {
@@ -57,6 +56,10 @@ const ExpenseForm = ( props ) => {
         setTitle('');
         setAmount('');
         setDate('');
+    }
+
+    const cancelExpense = () => {
+        props.showForm( false )
     }
 
     return (
@@ -76,7 +79,7 @@ const ExpenseForm = ( props ) => {
                 </div>
             </div>
             <div className="new-expense__actions">
-                <button>Cancel New Expenses </button>
+                <button onClick={ cancelExpense }>Cancel</button>
                 <button type="submit">Add Expense</button>
             </div>
         </form>
