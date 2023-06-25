@@ -1,5 +1,6 @@
 import "./ExpenseDate.css";
 
+//Expense Date is date renderer in Expenseitem.js
 const ExpenseDate = (prop) => {
     const data = prop.date;
     const month = data.toLocaleString('en-US', {month: 'long'});

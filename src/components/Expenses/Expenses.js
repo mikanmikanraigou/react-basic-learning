@@ -4,41 +4,49 @@ import ExpensesFilter from "./ExpensesFilter";
 import Card from "../UI/Card";
 import { useState } from "react";
 
+
+//Expenses is the list of all expenses rendered
 const Expenses = ( prop ) => {
     const expenses = prop.expense;
     const [year, setYear] = useState('*')
 
+    //return filtered data based on selected year
     const filtered = () => {
-        let filteredExpenses = expenses.filter(expense => {
-            return expense.date.getFullYear().toString() === year
-        })
-        if (year == '*') {
+        //filter data
+        let filteredExpenses = expenses.filter(expense => { return expense.date.getFullYear().toString() === year; })
+        if (year === '*') {
             filteredExpenses = expenses;
         }
         return filteredExpenses
     }
     
-
-    const addFilter = ( returnVal ) => {
+    const setFilteredYear = ( returnVal ) => {
         setYear(returnVal);
     }
-
-    let renderedContent = <p className="text-white-centered">No Expense Found</p>  
-    if (filtered().length > 0 ) {
-        renderedContent = filtered().map( x => <ExpenseItem key= { x.id } expensesData= { x }/> )
-    }        
-      
     return (
         <div>
             <Card className="expenses">
-                <ExpensesFilter year= { year } onAddFilter = { addFilter }/>
+                <ExpensesFilter year= { year } onAddFilter = { setFilteredYear }/>
             </Card>
             <Card className="expenses">
-            { renderedContent }
+            <ExpensesList data={ filtered() }/>
             </Card>
-
         </div>
     )
+}
+
+const ExpensesList = ( props ) => {
+    //=========renderedContent==========//
+    if (props.data.length === 0 ) {
+        return <h2 className="expenses-list__fallback"> Found no expenses </h2>
+    }        
+    return (
+        <ul className="expenses-list">
+            { props.data.map( x => <ExpenseItem key= { x.id } expensesData= { x }/> ) }
+        </ul>
+    
+    )
+    //=========renderedContent==========//
 }
 
 export default Expenses;
