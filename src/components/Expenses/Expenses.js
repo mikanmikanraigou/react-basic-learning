@@ -8,7 +8,7 @@ const Expenses = ( prop ) => {
     const expenses = prop.expense;
     const [year, setYear] = useState('*')
 
-    const filter = () => {
+    const filtered = () => {
         let filteredExpenses = expenses.filter(expense => {
             return expense.date.getFullYear().toString() === year
         })
@@ -22,6 +22,11 @@ const Expenses = ( prop ) => {
     const addFilter = ( returnVal ) => {
         setYear(returnVal);
     }
+
+    let renderedContent = <p className="text-white-centered">No Expense Found</p>  
+    if (filtered().length > 0 ) {
+        renderedContent = filtered().map( x => <ExpenseItem key= { x.id } expensesData= { x }/> )
+    }        
       
     return (
         <div>
@@ -29,8 +34,7 @@ const Expenses = ( prop ) => {
                 <ExpensesFilter year= { year } onAddFilter = { addFilter }/>
             </Card>
             <Card className="expenses">
-            {}
-            { filter().map( x => <ExpenseItem key= { x.id } expensesData= { x }/> ) }            
+            { renderedContent }
             </Card>
 
         </div>
