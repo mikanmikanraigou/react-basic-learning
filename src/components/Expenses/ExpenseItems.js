@@ -3,7 +3,7 @@ import "../UI/Card.css";
 
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
-import { useState } from "react";
+// import { useState } from "react";
 
 //Expenses item is indiviaual item that will be put in list in Expenses.js
 const ExpenseItem = (prop) => {
