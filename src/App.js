@@ -14,7 +14,6 @@ function App() {
   const [expenses, setExpenses] = useState(dummyData)
 
   const addExpenseHandler = ( expensesData ) => {
-    console.log(expensesData);
     //if dependent to previous state value instead using this below
     //setExpenses([expensesData, ...expenses])
     //USE THIS INSTEAD
